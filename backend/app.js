@@ -1,11 +1,10 @@
 import "dotenv/config";
 import cors from "cors";
-import * as express from "express";
+import express from "express";
 
-const app = express();
+let app = express();
 
 app.use(cors());
-
 app.get("/", (req, res) => {
   return res.send("Received a GET HTTP method");
 });
