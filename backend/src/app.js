@@ -27,6 +27,7 @@ app.post("/users", (req, res) => {
 app.put("/users/:userId", (req, res) => {
   return res.send("PUT HTTP method on user resource");
 });
+
 app.delete("/users/:userId", (req, res) => {
   return res.send(`DELETE HTTP method on user/${req.params.userId} resource`);
 });
