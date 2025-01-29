@@ -1,0 +1,5 @@
+### Get request for users
+GET http://localhost:3000/users
+
+### Delete request for users
+DELETE http://localhost:3000/users/1
