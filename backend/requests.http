@@ -1,27 +1,45 @@
-### Root Route - GET
+### Root GET
 GET http://localhost:3000/
 
-### Root Route - POST
+### Root POST
 POST http://localhost:3000/
 
-### Root Route - PUT
+### Root PUT
 PUT http://localhost:3000/
 
-### Root Route - DELETE
+### Root DELETE
 DELETE http://localhost:3000/
 
 
-### User Routes - GET
+### Users GET
 GET http://localhost:3000/users
 
-### User Routes - GET (Specific User)
+### User GET
 GET http://localhost:3000/users/1
 
-### User Routes - POST
+### User POST
 POST http://localhost:3000/users
 
-### User Routes - PUT (Specific User)
+### User PUT
 PUT http://localhost:3000/users/123
 
-### User Routes - DELETE (Specific User)
+### User DELETE
 DELETE http://localhost:3000/users/123
+
+
+### Messages Get
+GET http://localhost:3000/messages
+
+### Message Get
+GET http://localhost:3000/messages/1
+
+### Message POST
+POST http://localhost:3000/messages
+Content-Type: application/json
+
+{
+  "text": "Messagetexttset"
+}
+
+### Message DELETE
+DELETE http://localhost:3000/messages/1

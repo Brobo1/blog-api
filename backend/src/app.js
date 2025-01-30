@@ -1,8 +1,7 @@
 import "dotenv/config";
 import cors from "cors";
 import express from "express";
-
-let app = express();
+import { v4 as uuid4 } from "uuid";
 
 let users = {
   1: {
@@ -28,7 +27,17 @@ let messages = {
   },
 };
 
+let app = express();
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 app.use(cors());
+
+app.use((req, res, next) => {
+  req.me = users[1];
+  next();
+});
 
 app.get("/", (req, res) => {
   return res.send("Received a GET HTTP method");
@@ -57,6 +66,27 @@ app.put("/users/:userId", (req, res) => {
 });
 app.delete("/users/:userId", (req, res) => {
   return res.send(`DELETE HTTP method on user/${req.params.userId} resource`);
+});
+
+app.get("/messages", (req, res) => {
+  return res.send(Object.values(messages));
+});
+app.get("/messages/:messageId", (req, res) => {
+  return res.send(messages[req.params.messageId]);
+});
+app.post("/messages", (req, res) => {
+  const id = uuid4();
+  const message = { id, text: req.body.text, userId: req.me.id };
+  messages[id] = message;
+
+  return res.send(message);
+});
+app.put("/messages/:messageId", (req, res) => {});
+
+app.delete("/messages/:messageId", (req, res) => {
+  const { [req.params.messageId]: message, ...otherMessages } = messages;
+  messages = otherMessages;
+  return res.send(message);
 });
 
 const PORT = process.env.PORT;
