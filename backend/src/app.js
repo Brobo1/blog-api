@@ -81,7 +81,11 @@ app.post("/messages", (req, res) => {
 
   return res.send(message);
 });
-app.put("/messages/:messageId", (req, res) => {});
+app.put("/messages/:messageId", (req, res) => {
+  const message = { ...messages[req.params.messageId], text: req.body.text };
+  messages[req.params.messageId] = message;
+  res.send(message);
+});
 
 app.delete("/messages/:messageId", (req, res) => {
   const { [req.params.messageId]: message, ...otherMessages } = messages;

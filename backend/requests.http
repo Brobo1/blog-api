@@ -11,6 +11,7 @@ PUT http://localhost:3000/
 DELETE http://localhost:3000/
 
 
+
 ### Users GET
 GET http://localhost:3000/users
 
@@ -27,6 +28,7 @@ PUT http://localhost:3000/users/123
 DELETE http://localhost:3000/users/123
 
 
+
 ### Messages Get
 GET http://localhost:3000/messages
 
@@ -38,7 +40,15 @@ POST http://localhost:3000/messages
 Content-Type: application/json
 
 {
-  "text": "Messagetexttset"
+  "text": "Messagetext"
+}
+
+### Message PUT
+PUT http://localhost:3000/messages/1
+Content-Type: application/json
+
+{
+  "text": "Updated text"
 }
 
 ### Message DELETE
