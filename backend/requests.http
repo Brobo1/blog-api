@@ -1,5 +1,27 @@
-### Get request for users
+### Root Route - GET
+GET http://localhost:3000/
+
+### Root Route - POST
+POST http://localhost:3000/
+
+### Root Route - PUT
+PUT http://localhost:3000/
+
+### Root Route - DELETE
+DELETE http://localhost:3000/
+
+
+### User Routes - GET
 GET http://localhost:3000/users
 
-### Delete request for users
-DELETE http://localhost:3000/users/1
+### User Routes - GET (Specific User)
+GET http://localhost:3000/users/1
+
+### User Routes - POST
+POST http://localhost:3000/users
+
+### User Routes - PUT (Specific User)
+PUT http://localhost:3000/users/123
+
+### User Routes - DELETE (Specific User)
+DELETE http://localhost:3000/users/123
