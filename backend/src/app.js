@@ -78,7 +78,6 @@ app.post("/messages", (req, res) => {
   const id = uuid4();
   const message = { id, text: req.body.text, userId: req.me.id };
   messages[id] = message;
-
   return res.send(message);
 });
 app.put("/messages/:messageId", (req, res) => {
@@ -86,7 +85,6 @@ app.put("/messages/:messageId", (req, res) => {
   messages[req.params.messageId] = message;
   res.send(message);
 });
-
 app.delete("/messages/:messageId", (req, res) => {
   const { [req.params.messageId]: message, ...otherMessages } = messages;
   messages = otherMessages;
