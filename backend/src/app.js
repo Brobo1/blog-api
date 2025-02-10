@@ -1,7 +1,6 @@
 import "dotenv/config";
 import cors from "cors";
 import express from "express";
-import { v4 as uuid4 } from "uuid";
 import models from "./models";
 import routes from "./routes/index.js";
 
