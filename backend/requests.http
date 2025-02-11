@@ -1,17 +1,3 @@
-### Root GET
-GET http://localhost:3000/
-
-### Root POST
-POST http://localhost:3000/
-
-### Root PUT
-PUT http://localhost:3000/
-
-### Root DELETE
-DELETE http://localhost:3000/
-
-
-
 ### Users GET
 GET http://localhost:3000/users
 

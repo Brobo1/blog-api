@@ -6,4 +6,5 @@ export const userPost = async (req, res) => {
   const username = "ofiwjregoiergj";
   const password = "123";
   await createUser(username, password);
+  res.json("created");
 };

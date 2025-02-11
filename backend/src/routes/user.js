@@ -3,7 +3,7 @@ import { userPost } from "../controllers/user.js";
 
 const router = Router();
 
-router.get("/users", () => {});
-router.post("/users", userPost);
+router.get("/", () => {});
+router.post("/", userPost);
 
 export default router;

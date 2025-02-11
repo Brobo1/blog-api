@@ -11,13 +11,11 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cors());
 
-app.use((req, res, next) => {
-  next();
-});
+// app.use((req, res, next) => {
+//   next();
+// });
 
-app.use("/session", routes.session);
 app.use("/users", routes.user);
-app.use("/message", routes.message);
 
 process.on("SIGINT", async () => {
   prisma.$disconnect();
