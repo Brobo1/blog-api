@@ -2,6 +2,7 @@ import "dotenv/config";
 import cors from "cors";
 import express from "express";
 import routes from "./routes/index.js";
+import { prisma } from "../config/prismaConfig.js";
 
 let app = express();
 
@@ -18,6 +19,14 @@ app.use("/session", routes.session);
 app.use("/users", routes.user);
 app.use("/message", routes.message);
 
-const PORT = process.env.PORT;
+process.on("SIGINT", async () => {
+  prisma.$disconnect();
+  process.exit(0);
+});
+process.on("SIGTERM", async () => {
+  prisma.$disconnect();
+  process.exit(0);
+});
 
+const PORT = process.env.PORT;
 app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`));
