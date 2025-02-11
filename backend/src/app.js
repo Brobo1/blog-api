@@ -21,6 +21,5 @@ app.use("/users", routes.user);
 app.use("/message", routes.message);
 
 const PORT = process.env.PORT;
-console.log(PORT);
 
 app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`));
