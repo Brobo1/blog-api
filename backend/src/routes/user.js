@@ -1,21 +1,9 @@
 import { Router } from "express";
+import { userPost } from "../controllers/user.js";
 
 const router = Router();
 
-router.get("/users", (req, res) => {
-  return res.send(Object.values(req.context.models.users));
-});
-router.get("/:userId", (req, res) => {
-  return res.send(req.context.models.users[req.params.userId]);
-});
-router.post("/", (req, res) => {
-  return res.send("POST HTTP method on user resource");
-});
-router.put("/:userId", (req, res) => {
-  return res.send(`PUT HTTP method on user/${req.params.userId}`);
-});
-router.delete("/:userId", (req, res) => {
-  return res.send(`DELETE HTTP method on user/${req.params.userId} resource`);
-});
+router.get("/users", () => {});
+router.post("/users", userPost);
 
 export default router;
