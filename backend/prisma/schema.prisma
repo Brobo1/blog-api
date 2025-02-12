@@ -14,7 +14,7 @@ datasource db {
 }
 
 model Users {
-  id       Int    @id @default(autoincrement())
+  id       String @id @default(uuid())
   username String @unique
   password String
 
@@ -22,24 +22,24 @@ model Users {
 }
 
 model Posts {
-  id        Int      @id @default(autoincrement())
+  id        String   @id @default(uuid())
   title     String
   text      String
   createdAt DateTime @default(now())
   public    Boolean
 
-  userId Int
-  user   Users @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String
+  user   Users  @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   comments Comments[]
 }
 
 model Comments {
-  id        Int      @id @default(autoincrement())
+  id        String   @id @default(uuid())
   name      String
   text      String
   createdAt DateTime @default(now())
 
-  postId Int
-  post   Posts @relation(fields: [postId], references: [id], onDelete: Cascade)
+  postId String
+  post   Posts  @relation(fields: [postId], references: [id], onDelete: Cascade)
 }
