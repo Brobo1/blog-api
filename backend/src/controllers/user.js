@@ -1,10 +1,14 @@
-import { createUserQuery } from "../queries/user.js";
+import { createUserQuery, getUserQuery } from "../queries/user.js";
 
-export const userGetController = async (req, res) => {};
+export const getUserController = async (req, res) => {
+  const userId = req.params.userId;
+  const user = await getUserQuery(userId);
+  res.json(user);
+};
 
-export const userPostController = async (req, res) => {
+export const createUserController = async (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
-  await createUserQuery(username, password);
-  res.json("created");
+  const user = await createUserQuery(username, password);
+  res.json(user);
 };
