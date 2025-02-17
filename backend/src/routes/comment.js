@@ -7,3 +7,5 @@ import {
 const router = Router();
 
 router.get("/:postId", getCommentsController);
+
+export default router;

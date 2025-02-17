@@ -17,6 +17,7 @@ app.use(cors());
 
 app.use("/users", routes.user);
 app.use("/posts", routes.post);
+app.use("/comments", routes.comment);
 
 process.on("SIGINT", async () => {
   prisma.$disconnect();
