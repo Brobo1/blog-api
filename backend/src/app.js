@@ -11,9 +11,9 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cors());
 
-// app.use((req, res, next) => {
-//   next();
-// });
+app.use((req, res, next) => {
+  next();
+});
 
 app.use("/users", routes.user);
 app.use("/posts", routes.post);
