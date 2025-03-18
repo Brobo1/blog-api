@@ -1,8 +1,19 @@
-import { ExtractJwt, Strategy as JwtStrategy } from "passport-jwt";
+import { ExtractJwt, Strategy, StrategyOptions } from "passport-jwt";
 import passport from "passport";
+import { getUserQuery } from "../src/queries/user";
 
-let opts = {};
-opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-opts.secretOrKey = "secret";
+let opts: StrategyOptions = {
+  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+  secretOrKey: "secret",
+};
 
-passport.use(new JwtStrategy(opts), (err, user) => {});
+passport.use(
+  new Strategy(opts, async (payload, done) => {
+    try {
+      const user = getUserQuery(payload.id);
+      if (user) return done(null, user);
+    } catch (error) {
+      return done(error);
+    }
+  }),
+);
