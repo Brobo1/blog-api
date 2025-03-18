@@ -1,9 +1,9 @@
-import { createUserQuery, getUserQuery } from "../queries/user";
+import { createUserQuery, getUserByUsernameQuery } from "../queries/user";
 import { Request, Response } from "express";
 
 export const getUserController = async (req: Request, res: Response) => {
   const userId = req.params.userId;
-  const user = await getUserQuery(userId);
+  const user = await getUserByUsernameQuery(userId);
   res.json(user);
 };
 
