@@ -1,6 +1,6 @@
 import { prisma } from "../../config/prismaConfig";
 
-export async function getPostQuery(postId) {
+export async function getPostQuery(postId: string) {
   try {
     return prisma.posts.findFirst({
       where: { id: postId },

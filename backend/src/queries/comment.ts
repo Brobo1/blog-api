@@ -1,9 +1,9 @@
 import { prisma } from "../../config/prismaConfig";
 
-export async function getCommentQuery(CommentId) {
+export async function getCommentQuery(commentId: string) {
   try {
     return prisma.comments.findFirst({
-      where: { id: CommentId },
+      where: { id: commentId },
     });
   } catch (err) {
     console.error("error getting comment", err);
