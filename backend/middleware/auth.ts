@@ -1,19 +1,12 @@
-import { ExtractJwt, Strategy, StrategyOptions } from "passport-jwt";
+import { Request, Response, NextFunction } from "express";
 import passport from "passport";
-import { getUserByIdQuery } from "../src/queries/user";
 
-let opts: StrategyOptions = {
-  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-  secretOrKey: "secret",
+export const authJwt = (req: Request, res: Response, next: NextFunction) => {
+  const authHeader = req.headers.authorization;
+
+  if (!authHeader) {
+    return res.status(401).json({ message: "No token provided" });
+  }
+
+  console.log(authHeader);
 };
-
-passport.use(
-  new Strategy(opts, async (payload, done) => {
-    try {
-      const user = await getUserByIdQuery(payload.id);
-      if (user) return done(null, user);
-    } catch (error) {
-      return done(error);
-    }
-  }),
-);
