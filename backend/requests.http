@@ -2,19 +2,29 @@
 GET http://localhost:3000/users
 
 ### User GET
-GET http://localhost:3000/users/4acb89a7-0abc-4b27-ad78-7e3e0b6f0045
+GET http://localhost:3000/users/5deb516b-ad5c-43ab-a1bb-ebcef51cb9f0
 
 ### User POST
 POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-  "username": "asdawa",
+  "username": "areae",
   "password": "2342"
 }
+
+### User POST
+POST http://localhost:3000/users/login
+Content-Type: application/json
+
+{
+  "userId": "1"
+}
+
 
 ### User PUT
 PUT http://localhost:3000/users/123
 
 ### User DELETE
 DELETE http://localhost:3000/users/123
+

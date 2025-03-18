@@ -13,3 +13,8 @@ export const createUserController = async (req: Request, res: Response) => {
   const user = await createUserQuery(username, password);
   res.json(user);
 };
+
+export const loginUserController = async (req: Request, res: Response) => {
+  const isUser = await getUserQuery(req.body.userId);
+  res.json(isUser);
+};
