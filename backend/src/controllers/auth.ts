@@ -4,21 +4,21 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 export const loginController = async (req: Request, res: Response) => {
-  //CHANGE TO USERNAME WHEN GOING LIVE
   const isUser = await getUserByUsernameQuery(req.body.username);
 
+  // Check if user with that username exists
   if (!isUser) {
     res.status(400).json({ message: "User does not exist" });
     return;
   }
 
+  // Compare passwords
   const isPasswordMatch = await bcrypt.compare(
     req.body.password,
     isUser.password,
   );
 
-  console.log(isPasswordMatch);
-
+  // Check if passwords match
   if (!isPasswordMatch) {
     res.status(400).json({ message: "Incorrect password" });
     return;
