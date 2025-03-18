@@ -1,4 +1,4 @@
-import { prisma } from "../../config/prismaConfig.js";
+import { prisma } from "../../config/prismaConfig";
 import bcrypt from "bcrypt";
 
 export const createUserQuery = async (username, password) => {

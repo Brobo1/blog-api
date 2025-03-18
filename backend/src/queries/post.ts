@@ -1,4 +1,4 @@
-import { prisma } from "../../config/prismaConfig.js";
+import { prisma } from "../../config/prismaConfig";
 
 export async function getPostQuery(postId) {
   try {
