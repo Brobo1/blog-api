@@ -26,6 +26,7 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-  "userId": "1"
+  "username": "areae",
+  "password": "2342"
 }
 
