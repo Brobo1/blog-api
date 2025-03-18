@@ -16,3 +16,9 @@ export const getUserByUsernameQuery = async (username: string) => {
     where: { username },
   });
 };
+
+export const getUserByIdQuery = async (username: string) => {
+  return prisma.users.findFirst({
+    where: { username },
+  });
+};
