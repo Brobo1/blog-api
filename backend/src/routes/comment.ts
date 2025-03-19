@@ -1,12 +1,13 @@
 import { Router } from "express";
 import {
-  getCommentController,
   getCommentsController,
+  postCommentController,
 } from "../controllers/comment";
 
 const router = Router();
 
-router.get("/:postId", getCommentController);
+router.get("/:postId", getCommentsController);
 router.get("/", getCommentsController);
 
+router.post("/:postId", postCommentController);
 export default router;
