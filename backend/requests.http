@@ -30,3 +30,8 @@ Content-Type: application/json
   "password": "2342"
 }
 
+> {% client.global.set("authToken", response.body.accessToken) %}
+
+### Auth-Test GET
+GET http://localhost:3000/auth/test
+Authorization: Bearer {{authToken}}
