@@ -37,3 +37,10 @@ Authorization: Bearer {{authToken}}
 ### Post POST
 POST localhost:3000/post
 Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "title": "title1",
+  "text": "text1",
+  "visibility": false
+}
