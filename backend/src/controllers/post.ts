@@ -13,6 +13,7 @@ export const getPostsController = async (req: Request, res: Response) => {
 };
 
 export const createPostController = async (req: Request, res: Response) => {
-  const userId = res.locals;
+  const userId = res.locals.user.id;
+  console.log(userId);
   res.json(userId);
 };

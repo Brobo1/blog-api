@@ -4,12 +4,13 @@ import {
   getPostController,
   getPostsController,
 } from "../controllers/post";
+import { authJwt } from "../../middleware/auth";
 
 const router = Router();
 
 router.get("/:postId", getPostController);
 router.get("/", getPostsController);
 
-router.post("/", createPostController);
+router.post("/", authJwt, createPostController);
 
 export default router;

@@ -1,11 +1,9 @@
-### Users GET
-GET http://localhost:3000/users
 
 ### User GET
-GET http://localhost:3000/users/5deb516b-ad5c-43ab-a1bb-ebcef51cb9f0
+GET http://localhost:3000/user/5deb516b-ad5c-43ab-a1bb-ebcef51cb9f0
 
 ### User POST
-POST http://localhost:3000/users
+POST http://localhost:3000/user
 Content-Type: application/json
 
 {
@@ -14,10 +12,10 @@ Content-Type: application/json
 }
 
 ### User PUT
-PUT http://localhost:3000/users/123
+PUT http://localhost:3000/user/123
 
 ### User DELETE
-DELETE http://localhost:3000/users/123
+DELETE http://localhost:3000/user/123
 
 
 
@@ -36,4 +34,6 @@ Content-Type: application/json
 GET http://localhost:3000/auth/test
 Authorization: Bearer {{authToken}}
 
-
+### Post POST
+POST localhost:3000/post
+Authorization: Bearer {{authToken}}
