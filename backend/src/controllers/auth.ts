@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { getUserByUsernameQuery } from "../queries/user";
+import { getUserByIdQuery, getUserByUsernameQuery } from "../queries/user";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
@@ -36,4 +36,14 @@ export const loginController = async (req: Request, res: Response) => {
   );
 
   res.status(200).json({ message: "User logged in", accessToken });
+};
+
+export const authTestController = async (req: Request, res: Response) => {
+  let userId = res.locals.user.id;
+
+  let user = await getUserByIdQuery(userId);
+
+  console.log(user);
+
+  res.json({ user });
 };
