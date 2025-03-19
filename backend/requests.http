@@ -34,13 +34,17 @@ Content-Type: application/json
 GET http://localhost:3000/auth/test
 Authorization: Bearer {{authToken}}
 
+
+### Post GET
+GET localhost:3000/post
+
 ### Post POST
 POST localhost:3000/post
 Authorization: Bearer {{authToken}}
 Content-Type: application/json
 
 {
-  "title": "title1",
-  "text": "text1",
+  "title": "title2",
+  "text": "text2",
   "visibility": false
 }
