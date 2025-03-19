@@ -48,3 +48,15 @@ Content-Type: application/json
   "text": "text2",
   "visibility": false
 }
+
+### Comment GET
+GET localhost:3000/comment
+
+### Comment POST
+POST localhost:3000/comment/8269ff98-0c19-4651-b06f-027a78e59494
+Content-Type: application/json
+
+{
+  "name": "comment1",
+  "text": "text1"
+}
