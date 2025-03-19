@@ -1,16 +1,15 @@
 import { Request, Response } from "express";
-import { createPostQuery } from "../queries/post";
+import { createPostQuery, getPostQuery, getPostsQuery } from "../queries/post";
 
 export const getPostController = async (req: Request, res: Response) => {
   const postId = req.params.postId;
-  // const user = await getUserQuery(userId);
-  res.json("return");
+  const post = getPostQuery(postId);
+  res.json(post);
 };
 
 export const getPostsController = async (req: Request, res: Response) => {
-  const userId = req.params.postId;
-  // const user = await getUserQuery(userId);
-  res.json("return");
+  const posts = await getPostsQuery();
+  res.json(posts);
 };
 
 export const createPostController = async (req: Request, res: Response) => {
