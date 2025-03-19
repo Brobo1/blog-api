@@ -16,10 +16,10 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/users", routes.user);
+app.use("/user", routes.user);
 app.use("/auth", routes.auth);
-app.use("/posts", routes.post);
-app.use("/comments", routes.comment);
+app.use("/post", routes.post);
+app.use("/comment", routes.comment);
 
 process.on("SIGINT", async () => {
   prisma.$disconnect();
