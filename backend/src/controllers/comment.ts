@@ -1,12 +1,19 @@
 //using function instead of const in this controller just to learn the difference
 import { Request, Response } from "express";
-
-export async function getCommentController(req: Request, res: Response) {
-  const commentId = req.params.commentId;
-  res.json(commentId);
-}
+import { createCommentQuery, getCommentsQuery } from "../queries/comment";
+import { createPostQuery } from "../queries/post";
 
 export async function getCommentsController(req: Request, res: Response) {
   const postId = req.params.postId;
-  res.json(postId);
+  const comments = getCommentsQuery(postId);
+  res.json(comments);
+}
+
+export async function postCommentController(req: Request, res: Response) {
+  const postId = req.params.postId;
+  const { name, text } = req.body;
+
+  await createCommentQuery(name, text, postId);
+
+  res.status(200).json({ message: "Post successfully created" });
 }
