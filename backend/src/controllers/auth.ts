@@ -4,8 +4,15 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 export const loginController = async (req: Request, res: Response) => {
-  const isUser = await getUserByUsernameQuery(req.body.username);
+  const { username, password } = req.body;
 
+  if (!username || !password) {
+    res.status(400).json({ message: "Username or password missing" });
+    return;
+  }
+
+  const isUser = await getUserByUsernameQuery(username);
+  console.log(req.body.username);
   // Check if user with that username exists
   if (!isUser) {
     res.status(400).json({ message: "User does not exist" });
