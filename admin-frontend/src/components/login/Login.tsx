@@ -1,7 +1,7 @@
 import {loginUser} from "../../api/user.ts";
 
 export function Login() {
-	
+	//TODO Store JWT
 	async function userLogin(formData: FormData) {
 		const {username, password} = Object.fromEntries(formData.entries()) as {
 			username:string;
