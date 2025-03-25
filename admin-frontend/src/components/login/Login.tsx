@@ -1,16 +1,19 @@
 import { loginUser } from "../../api/user.ts";
 import style from "./Login.module.css";
-import { User } from "../../types/types.ts";
+import { User, UserToken } from "../../types/types.ts";
 
 export function Login() {
-  //TODO Store JWT
   async function userLogin(formData: FormData) {
-    const user: User = {
-      username: formData.get("username") as string,
-      password: formData.get("password") as string,
-    };
-    const response = await loginUser(user);
-    console.log(response);
+    try {
+      const user: User = {
+        username: formData.get("username") as string,
+        password: formData.get("password") as string,
+      };
+      const response: UserToken = await loginUser(user);
+      localStorage.setItem("token", response.accessToken);
+    } catch (err) {
+      console.error("Failed to login", err);
+    }
   }
 
   return (
