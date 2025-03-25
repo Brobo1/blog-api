@@ -1,9 +1,9 @@
 import style from "./Login.module.css";
-import { User, UserToken } from "../../types/types.ts";
+import { User } from "../../types/types.ts";
 import { useAuth } from "../../contexts/AuthContext.tsx";
 
 export function Login() {
-  const { login, loading, error, isAuth, user, logout } = useAuth();
+  const { login, isAuth, user, logout } = useAuth();
   async function userLogin(formData: FormData) {
     const user: User = {
       username: formData.get("username") as string,

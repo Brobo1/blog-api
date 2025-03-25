@@ -22,6 +22,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const response: UserToken = await loginUser(user);
       localStorage.setItem("token", response.accessToken);
       setToken(response.accessToken);
+      setUser(user);
       setIsAuth(true);
     } catch (err) {
       console.error("Failed to login", err);
