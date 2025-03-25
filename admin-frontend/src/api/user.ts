@@ -7,13 +7,14 @@ import { User } from "../types/types.ts";
 
 export async function createUser(user: User) {
   try {
-    return await fetch(createUserEndpoint, {
+    const response = await fetch(createUserEndpoint, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(user),
     });
+    return response.json();
   } catch (err) {
     console.error("Unable to register user", err);
   }
@@ -27,17 +28,16 @@ export async function getUser(username: string, password: string) {
   });
 }
 
-export async function loginUser(username: string, password: string) {
+export async function loginUser(user: User) {
   try {
     const response = await fetch(loginEndpoint, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify(user),
     });
-    const json = await response.json();
-    return json;
+    return response.json();
   } catch (err) {
     console.error("Unable to login", err);
   }

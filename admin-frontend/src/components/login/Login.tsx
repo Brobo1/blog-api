@@ -1,14 +1,15 @@
 import { loginUser } from "../../api/user.ts";
 import style from "./Login.module.css";
+import { User } from "../../types/types.ts";
 
 export function Login() {
   //TODO Store JWT
   async function userLogin(formData: FormData) {
-    const { username, password } = Object.fromEntries(formData.entries()) as {
-      username: string;
-      password: string;
+    const user: User = {
+      username: formData.get("username") as string,
+      password: formData.get("password") as string,
     };
-    const response = await loginUser(username, password);
+    const response = await loginUser(user);
     console.log(response);
   }
 
