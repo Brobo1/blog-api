@@ -1,28 +1,31 @@
-import { loginUser } from "../../api/user.ts";
 import style from "./Login.module.css";
 import { User, UserToken } from "../../types/types.ts";
+import { useAuth } from "../../contexts/AuthContext.tsx";
 
 export function Login() {
+  const { login, loading, error, isAuth, user, logout } = useAuth();
   async function userLogin(formData: FormData) {
-    try {
-      const user: User = {
-        username: formData.get("username") as string,
-        password: formData.get("password") as string,
-      };
-      const response: UserToken = await loginUser(user);
-      localStorage.setItem("token", response.accessToken);
-    } catch (err) {
-      console.error("Failed to login", err);
-    }
+    const user: User = {
+      username: formData.get("username") as string,
+      password: formData.get("password") as string,
+    };
+    await login(user);
   }
 
   return (
     <>
-      <form id={style.loginForm} action={userLogin}>
-        <input type="text" name="username" />
-        <input type="password" name="password" />
-        <button type={"submit"}>Login</button>
-      </form>
+      {!isAuth ? (
+        <form id={style.loginForm} action={userLogin}>
+          <input type="text" name="username" />
+          <input type="password" name="password" />
+          <button type={"submit"}>Login</button>
+        </form>
+      ) : (
+        <div>
+          <div>Logged in to user {user?.username}</div>
+          <button onClick={logout}>Logout</button>
+        </div>
+      )}
     </>
   );
 }
