@@ -16,7 +16,7 @@ export function Login() {
     <>
       <form id={style.loginForm} action={userLogin}>
         <input type="text" name="username" />
-        <input type="text" name="password" />
+        <input type="password" name="password" />
         <button type={"submit"}>Login</button>
       </form>
     </>

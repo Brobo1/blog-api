@@ -18,7 +18,7 @@ export function Register() {
     <>
       <form action={RegisterUser} id={style.registerForm}>
         <input type="text" name="username" id="usernameField" />
-        <input type="text" name="password" id="passwordField" />
+        <input type="password" name="password" id="passwordField" />
         <button type={"submit"}>Register</button>
       </form>
     </>
