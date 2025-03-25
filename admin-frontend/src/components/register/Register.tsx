@@ -1,5 +1,6 @@
 import { createUser } from "../../api/user.ts";
 import { User } from "../../types/types.ts";
+import style from "./Register.module.css";
 
 export function Register() {
   async function RegisterUser(formData: FormData) {
@@ -15,7 +16,7 @@ export function Register() {
 
   return (
     <>
-      <form action={RegisterUser}>
+      <form action={RegisterUser} id={style.registerForm}>
         <input type="text" name="username" id="usernameField" />
         <input type="text" name="password" id="passwordField" />
         <button type={"submit"}>Register</button>

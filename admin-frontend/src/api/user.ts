@@ -6,10 +6,17 @@ import {
 import { User } from "../types/types.ts";
 
 export async function createUser(user: User) {
-  await fetch(createUserEndpoint, {
-    method: "POST",
-    body: JSON.stringify(user),
-  });
+  try {
+    return await fetch(createUserEndpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    });
+  } catch (err) {
+    console.error("Unable to register user", err);
+  }
 }
 
 export async function getUser(username: string, password: string) {
