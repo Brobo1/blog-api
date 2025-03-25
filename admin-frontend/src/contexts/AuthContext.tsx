@@ -20,8 +20,36 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setError(null);
     try {
       const response: UserToken = await loginUser(user);
+      localStorage.setItem("token", response.accessToken);
+      setToken(response.accessToken);
+      setIsAuth(true);
     } catch (err) {
       console.error("Failed to login", err);
+    } finally {
+      setLoading(false);
     }
   }
+
+  function logout() {
+    localStorage.removeItem("token");
+    setToken(null);
+    setIsAuth(false);
+    setUser(null);
+  }
+
+  const authContextValue: AuthContextType = {
+    isAuth,
+    user,
+    token,
+    login,
+    logout,
+    loading,
+    error,
+  };
+
+  return (
+    <AuthContext.Provider value={authContextValue}>
+      {children}
+    </AuthContext.Provider>
+  );
 }
