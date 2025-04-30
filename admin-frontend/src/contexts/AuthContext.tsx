@@ -28,8 +28,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       //Send request using form data
       const response: UserToken = await loginUser(user);
 
-      console.log();
-
       localStorage.setItem("token", response.accessToken);
       setToken(response.accessToken);
       setUser(user);

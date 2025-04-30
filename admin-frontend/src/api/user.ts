@@ -37,6 +37,11 @@ export async function loginUser(user: User) {
       },
       body: JSON.stringify(user),
     });
+
+    if (response.status === 400) {
+      throw new Error("Invalid username or password");
+    }
+
     return response.json();
   } catch (err) {
     console.error("Unable to login", err);
