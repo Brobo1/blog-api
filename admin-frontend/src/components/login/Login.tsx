@@ -22,7 +22,7 @@ export function Login() {
         </form>
       ) : (
         <div>
-          <div>Logged in to user {user?.username}</div>
+          <h2>Welcome {user?.username}</h2>
           <button onClick={logout}>Logout</button>
         </div>
       )}
