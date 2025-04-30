@@ -18,8 +18,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   async function login(user: User) {
     setLoading(true);
     setError(null);
+
     try {
+      //check that username and password are provided
+      if (!user.username || !user.password) {
+        throw new Error("Username and password are required");
+      }
+
+      //Send request using form data
       const response: UserToken = await loginUser(user);
+
+      console.log();
+
       localStorage.setItem("token", response.accessToken);
       setToken(response.accessToken);
       setUser(user);

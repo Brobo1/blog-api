@@ -12,6 +12,8 @@ export function Login() {
     await login(user);
   }
 
+  // console.log(isAuth, user?.username);
+
   return (
     <>
       {!isAuth ? (
